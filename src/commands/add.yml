@@ -7,9 +7,21 @@ parameters:
     type: string
     default: "World"
     description: "Hello to whom?"
+  numA:
+    type: integer
+    description: "The first number"
+  numB:
+    type: integer
+    description: "The second number"
 steps:
   - run:
       environment:
         PARAM_TO: <<parameters.to>>
       name: Hello Greeting
       command: <<include(scripts/greet.sh)>>
+  - run:
+      environment:
+        PARAM_NUMA: <<parameters.numA>>
+        PARAM_NUMB: <<parameters.numB>>
+      name: Adding <<parameters.numA>> + <<parameters.numB>>
+      command: <<include(scripts/add.sh)>>

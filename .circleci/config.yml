@@ -19,6 +19,13 @@ workflows:
           filters: *filters
       - shellcheck/check:
           filters: *filters
+      # - orb-tools/publish:
+      #     orb-name: jsugarman/hello-world
+      #     vcs-type: << pipeline.project.type >>
+      #     requires: 
+      #       [orb-tools/lint, orb-tools/pack, orb-tools/review, shellcheck/check]
+      #     context: orb-publishing
+      #     filters: *filters
       # Triggers the next workflow in the Orb Development Kit.
       - orb-tools/continue:
           pipeline_number: << pipeline.number >>
